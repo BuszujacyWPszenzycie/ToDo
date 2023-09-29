@@ -13,6 +13,7 @@ const closeIcon = document.querySelector('.icon__close')
 const addToDoFunction = () => {
 	addFilterFunction()
 	showModalFunction()
+	setFocusInputFunction()
 }
 
 const addFilterFunction = () => {
@@ -25,11 +26,17 @@ const showModalFunction = () => {
 	modal.classList.add('show-modal')
 }
 
+const setFocusInputFunction = () => {
+	const modalInputValue = document.querySelector('.modal__input')
+	modalInputValue.focus()
+}
+
 // Canceling ToDo
 
 const cancelToDoFunction = () => {
 	removeBlurFunction()
 	hideModalFunction()
+	clearInputToDoFunction()
 }
 
 const removeBlurFunction = () => {
@@ -40,6 +47,11 @@ const removeBlurFunction = () => {
 
 const hideModalFunction = () => {
 	modal.classList.remove('show-modal')
+}
+
+const clearInputToDoFunction = () => {
+	const modalInputValue = document.querySelector('.modal__input')
+	modalInputValue.value = ''
 }
 
 // This can be removed after all ToDo list is finished, this is only adding listeners to existing ToDo's. Since there will be not at the begining we can easily delete that
@@ -57,7 +69,7 @@ for (let i = 0; i < allCheckbox.length; i++) {
 // Function for creating ToDo
 
 const createToDoFunction = () => {
-	const modalInputValue = document.querySelector('.modal__input').value
+	const modalInputValue = document.querySelector('.modal__input')
 	// Creating ToDo
 	const toDoDiv = document.createElement('div')
 	toDoDiv.classList.add('todo')
@@ -68,7 +80,7 @@ const createToDoFunction = () => {
 	const toDoP = document.createElement('p')
 	toDoP.classList.add('todo__text')
 	// toDoP.textContent = 'To do dodany przez button'
-	toDoP.textContent = modalInputValue
+	toDoP.textContent = modalInputValue.value
 	toDoDiv.appendChild(toDoInput)
 	toDoDiv.appendChild(toDoP)
 	boxToDo.appendChild(toDoDiv)
@@ -99,12 +111,18 @@ const createToDoFunction = () => {
 	})
 
 	cancelToDoFunction()
+	modalInputValue.value = ''
+	allBtn[0].focus()
 }
 
 // Fuinction for removing last element
 
 const removeLastToDoFunction = () => {
 	boxToDo.removeChild(boxToDo.lastChild)
+}
+
+const removeAllToDoFunction = () => {
+	boxToDo.textContent = ''
 }
 
 // Adding dragstart and dragend to the existing elements, --> it can be removed when app is ready
@@ -134,4 +152,5 @@ boxTrash.addEventListener('dragover', e => {
 allBtn[0].addEventListener('click', addToDoFunction)
 allBtn[1].addEventListener('click', removeLastToDoFunction)
 closeIcon.addEventListener('click', cancelToDoFunction)
+allBtn[2].addEventListener('click', removeAllToDoFunction)
 allBtn[3].addEventListener('click', createToDoFunction)
