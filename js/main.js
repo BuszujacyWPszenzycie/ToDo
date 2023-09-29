@@ -2,6 +2,10 @@ const allCheckbox = document.querySelectorAll('.todo__checkbox')
 const allToDoText = document.querySelectorAll('.todo__text')
 const allBtn = document.querySelectorAll('.btn')
 const boxToDo = document.querySelector('.box__todo')
+const allToDo = document.querySelectorAll('.todo')
+const boxTrash = document.querySelector('.box__trash')
+
+// console.log(allToDo)
 
 // This can be removed after all ToDo list is finished, this is only adding listeners to existing ToDo's. Since there will be not at the begining we can easily delete that
 
@@ -46,52 +50,45 @@ const createToDoFunciton = () => {
 			}
 		})
 	}
+
+	// Adding dragstart and dragend for creating new ToDo's
+
+	toDoDiv.addEventListener('dragstart', () => {
+		toDoDiv.classList.add('is-dragged')
+	})
+
+	toDoDiv.addEventListener('dragend', () => {
+		toDoDiv.classList.remove('is-dragged')
+	})
 }
+
+// Fuinction for removing last element
 
 const removeLastToDo = () => {
 	boxToDo.removeChild(boxToDo.lastChild)
-
-	// select.removeChild(select.lastChild)
 }
+
+// Adding dragstart and dragend to the existing elements, --> it can be removed when app is ready
+
+allToDo.forEach(todo => {
+	todo.addEventListener('dragstart', () => {
+		todo.classList.add('is-dragged')
+	})
+
+	todo.addEventListener('dragend', () => {
+		todo.classList.remove('is-dragged')
+	})
+})
+
+// Function for removing ToDo's
+
+boxTrash.addEventListener('dragover', e => {
+	e.preventDefault()
+	// console.log(boxTrash)
+	const isDragged = document.querySelector('.is-dragged')
+	boxTrash.appendChild(isDragged)
+	boxTrash.removeChild(boxTrash.lastChild)
+})
 
 allBtn[0].addEventListener('click', createToDoFunciton)
 allBtn[1].addEventListener('click', removeLastToDo)
-
-// allBtn[3].addEventListener('click', isCheckedFunction)
-// allCheckbox[0].addEventListener('click', isCheckedFunction)
-
-// const testFunction = () => {
-// 	console.log(checkbox.indexOf())
-// }
-
-// allCheckbox.forEach(checkbox => {
-// 	checkbox.addEventListener('click', testFunction)
-// })
-
-// // const doneToDoFunction = () => {
-// // 	if (allCheckbox[0].checked == true) {
-// // 		allToDoText[0].classList.add('todo-done')
-// // 	} else {
-// // 		allToDoText[0].classList.remove('todo-done')
-// // 	}
-// // }
-
-// // allBtn[3].addEventListener('click', doneToDoFunction)
-
-// const isCheckedFunction = () => {
-// 	if (allCheckbox[0].checked) {
-// 		console.log('is checked')
-// 	} else {
-// 		console.log('is not checked')
-// 	}
-// }
-
-// const indexOfFunction = () => {
-// 	// console.log(allCheckbox[0].indexOf())
-// 	allToDoText[0].classList.add('todo-done')
-// 	console.log('test')
-// }
-
-// for (let i = 0; i < allCheckbox.length; i++) {
-// 	allCheckbox[i].addEventListener('click', isCheckedFunction)
-// }
