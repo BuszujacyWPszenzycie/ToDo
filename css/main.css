@@ -22,11 +22,21 @@ body {
 }
 
 .wrapper {
+  position: relative;
   margin-top: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+.wrapper__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(5px);
+  z-index: 1;
 }
 
 .box__btn {
@@ -70,6 +80,13 @@ body {
 .btn:hover {
   background-color: #b2daff;
 }
+.btn__apply {
+  background-color: #090580;
+  color: #f1f6f9;
+}
+.btn__apply:hover {
+  background-color: #25217c;
+}
 
 .todo {
   display: flex;
@@ -88,10 +105,57 @@ body {
   margin: 2rem;
 }
 
+.modal {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 600px;
+  height: 200px;
+  background-color: #f1f6f9;
+  border-radius: 8px;
+  transform: translateX(-2000px);
+  transition: transform 0.4s;
+  box-shadow: 4px 4px 50px 16px rgba(9, 5, 128, 0.4);
+}
+.modal__input {
+  background-color: #090580;
+  color: #f1f6f9;
+  border: none;
+  width: 400px;
+  height: 40px;
+  padding: 1rem;
+  margin: 1rem;
+  margin-bottom: 2.5rem;
+  font-size: 2rem;
+  border-radius: 8px;
+}
+
 .icon {
   font-size: 8rem;
+}
+.icon__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1.5rem;
+  font-size: 4rem;
+  transition: transform 0.4s;
+  cursor: pointer;
+}
+.icon__close:hover {
+  transform: rotate(-180deg);
 }
 
 .todo-done {
   text-decoration: line-through;
+}
+
+.blur {
+  filter: blur(4px);
+}
+
+.show-modal {
+  transform: translateX(0);
 }/*# sourceMappingURL=main.css.map */
