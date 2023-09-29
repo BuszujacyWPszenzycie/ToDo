@@ -1,0 +1,97 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  background-color: #f1f6f9;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  color: #080202;
+}
+
+.wrapper {
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.box__btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 800px;
+  height: 150px;
+  background-color: #090580;
+  border-radius: 8px;
+}
+.box__todo {
+  margin-top: 2rem;
+  width: 800px;
+  height: auto;
+  border-radius: 8px;
+  background-color: #090580;
+}
+.box__trash {
+  margin-top: 2rem;
+  width: 800px;
+  height: 150px;
+  background-color: #f58b8b;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 200px;
+  height: 50px;
+  text-transform: uppercase;
+  background-color: #c5dff8;
+  border: none;
+  border-radius: 8px;
+  font-size: 2rem;
+  transition: background-color 0.4;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #b2daff;
+}
+
+.todo {
+  display: flex;
+  font-size: 1.5rem;
+  color: #f1f6f9;
+}
+.todo__checkbox {
+  background-color: #f1f6f9;
+  transform: scale(1.5);
+  padding: 2rem;
+  margin: 2rem;
+  accent-color: #d71313;
+}
+.todo__text {
+  text-transform: uppercase;
+  margin: 2rem;
+}
+
+.icon {
+  font-size: 8rem;
+}
+
+.todo-done {
+  text-decoration: line-through;
+}/*# sourceMappingURL=main.css.map */

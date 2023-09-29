@@ -1,0 +1,17 @@
+@use 'colors' as *;
+
+@mixin btn {
+	width: 200px;
+	height: 50px;
+	text-transform: uppercase;
+	background-color: $light-blue;
+	border: none;
+	border-radius: 8px;
+	font-size: 2rem;
+	transition: background-color 0.4;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $light-blue-hover;
+	}
+}
